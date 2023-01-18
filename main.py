@@ -30,32 +30,32 @@ recvwindow = 3000
 def parse(my_period):
     response = requests.post(url, headers=headers, data=data)
     json_data = json.loads(response.text)
-    time = json_data['responseTime']
+    time_ = json_data['responseTime']
     status = json_data['status']
     if status == 'REQUEST_FAILED':
-        return time
+        return time_
     results = json_data['Results']
     if results == None:
-        return time
+        return time_
     my_objects = results.get('series')
     if my_objects == None:
-        return time
+        return time_
     my_object = my_objects[0]
     if my_object == None:
-        return time
+        return time_
     data_all = my_object.get('data')
     if data_all == None:
-        return time
+        return time_
     data = data_all[0]
     if data == None:
-        return time
+        return time_
     period = data.get('period')
     if period != my_period:
-        return time
+        return time_
     value = data.get('value')
     if value == None:
-        return time
-    return time, value    
+        return time_
+    return time_, value    
 
 
 def main_parse():
