@@ -16,7 +16,7 @@ period = 'M13'
 X = 298.112         # с чем сравниваем
 
 # timestamp = datetime.datetime(2023, 1, 23, 8, 0, 0)  # 2023 год, 23 января, 8:00:00
-timestamp = 1673989070   # время в unix-формате
+timestamp = time.mktime(datetime.datetime.today().timetuple())   # время в unix-формате
 timestamp_period = 3*60  # 3 минуты = 3*60 секунд. сколько будет ждать появления данных
 
 # Binance
